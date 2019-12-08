@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="navbar-header">
+  <nav class="navbar navbar-dark bg-dark">
+  <div class="navbar-header">
       <router-link to="/" class="navbar-brand">Stock Trader</router-link>
     </div>
 
@@ -13,6 +13,7 @@
           <a>Stocks</a>
         </router-link>
       </ul>
+      <strong class="navbar-text navbar-right">Funds: {{ funds }}</strong>
       <ul class="nav navbar-nav navbar-right">
           <li><a href="">End Day</a></li>
           <li class="dropdown">
@@ -24,11 +25,19 @@
           </li>
       </ul>
     </div>
-  </nav>
+</nav>
+
 </template>
 
 <script>
-export default {};
+export default {
+  computed: {
+    funds() {
+      return this.$store.getters.funds;
+    }
+  }
+    
+};
 </script>
 
 <style>
