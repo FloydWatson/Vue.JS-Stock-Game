@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar navbar-dark bg-dark">
-  <div class="navbar-header">
+    <div class="navbar-header">
       <router-link to="/" class="navbar-brand">Stock Trader</router-link>
     </div>
 
@@ -15,28 +15,51 @@
       </ul>
       <strong class="navbar-text navbar-right">Funds: {{ funds | currency }}</strong>
       <ul class="nav navbar-nav navbar-right">
-          <li><a href="">End Day</a></li>
-          <li class="dropdown">
-              <a href="" role="button" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false">Save / load</a>
-              <ul class="dropdown-menu">
-                  <li><a href="">Save Data</a></li>
-                  <li><a href="">Load Data</a></li>
-              </ul>
-          </li>
+        <li>
+          <a href="#" role="button" @click="endDay">End Day</a>
+        </li>
+        <li class="dropdown">
+          <a
+            href="#"
+            role="button"
+            data-toggle="dropdown"
+            class="dropdown-toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >Save / load</a>
+          <ul class="dropdown-menu">
+            <li>
+              <a href="#">Save Data</a>
+            </li>
+            <li>
+              <a href="#">Load Data</a>
+            </li>
+          </ul>
+        </li>
       </ul>
     </div>
-</nav>
-
+  </nav>
 </template>
 
 <script>
+import {mapActions} from 'vuex';
+
 export default {
+  
+
   computed: {
     funds() {
       return this.$store.getters.funds;
     }
+  },
+  methods: {
+    ...mapActions([
+      'randomizeStocks'
+    ]),
+    endDay(){
+      this.randomizeStocks();
+    }
   }
-    
 };
 </script>
 

@@ -9,7 +9,14 @@ const mutations = {
         state.stocks = stocks;
     },
     'RND_STOCKS' (state) {
-
+        state.stocks.forEach(stock => {
+            // will be multiplied by a number between 0.5 and 1.5
+            stock.price = Math.round(stock.price * (1 + Math.random() - 0.5));
+            if(stock.price <= 20){
+                stock.price += Math.round( Math.random() * 10)
+            }
+            console.log(stock.price);
+        });
     }
 
 };

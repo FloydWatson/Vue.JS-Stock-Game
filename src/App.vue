@@ -1,10 +1,12 @@
 <template>
   <div class="container">
     <app-header></app-header>
-
+    <hr />
     <div class="row">
       <div class="col-xs-12">
-        <router-view></router-view>
+        <transition name="slide" mode="out-in">
+          <router-view></router-view>
+        </transition>
       </div>
     </div>
   </div>
@@ -23,7 +25,8 @@ export default {
 </script>
 
 <style>
-body {
-  padding: 30px;
-}
+    body {
+    padding: 30px;
+    }
+
 </style>
